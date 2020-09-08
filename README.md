@@ -1,3 +1,36 @@
+
+This project is about video playerwhere admin can only upload videos with title , description and tumbnail, where useres ca see the videos
+
+The sql file is attachedt in the path public\assets\sql and for admin panel login creds are by default in the input box for your reference
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
 
 <p align="center">
