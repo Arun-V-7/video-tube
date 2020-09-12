@@ -56,6 +56,9 @@
             img {
                 width: 100%;
             }
+			.col-md-4 {
+    height: 500px;
+}
         </style>
     </head>
     <body>
