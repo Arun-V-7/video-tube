@@ -16,6 +16,11 @@
 
         <!-- If you'd like to support IE8 (for Video.js versions prior to v7) -->
         <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+		
+		
+		
+		<link href="/assets/js/videojs-marquee-overlay-scrolling-text-master/video-js.css" rel="stylesheet">
+  <link href="/assets/js/videojs-marquee-overlay-scrolling-text-master/videojs.watermark.css" rel="stylesheet">
 
         <!-- Styles -->
         <style>
@@ -74,6 +79,20 @@
             img {
                 width: 100%;
             }
+			
+			  .vjs-emre-marquee {
+    width: 100%;
+    overflow: hidden;
+    border: none;
+    z-index:9998;
+    position:absolute;
+    font-size: 20px;
+	top: 100px;
+	background-color: transparent !important;
+  }
+  .vjs-control{
+    z-index:9999;
+  }
         </style>
     </head>
     <body>
@@ -98,26 +117,19 @@
 
                 <div class="col-md-8">
                     <div class="card">
-                        <video id="my-video" class="video-js" controls preload="auto" width="" height="264" autoplay
-                               poster="{{$video['tumbnail']}}"
-                               data-setup="{}">
-                            <source src="{{$video['video_path']}}" type="video/mp4"/>
-                            {{--                        <source src="MY_VIDEO.webm" type="video/webm" />--}}
-                            <p class="vjs-no-js">
-                                To view this video please enable JavaScript, and consider upgrading to a
-                                web browser that
-                                <a href="https://videojs.com/html5-video-support/" target="_blank"
-                                >supports HTML5 video</a
-                                >
-                            </p>
-                        </video>
+                        <video id="videojs-marquee-overlay-player" class="video-js vjs-default-skin" controls width="848" height="480"  data-setup='{"playbackRates": [1, 1.5, 2] }'>
+  <source src="{{$video['video_path']}}" type="video/mp4">
+</video>
                         <div class="video-text">
                             <h2>{{$video['title']}}</h2>
                             <p>{{$video['description']}}</p>
                         </div>
 
                     </div>
-                </div>
+                
+				
+		
+				</div>
 
                 <div class="col-md-4">
                     @foreach($suggessions as $data)
@@ -138,5 +150,32 @@
     </div>
 
     <script src="https://vjs.zencdn.net/7.8.4/video.js"></script>
+	
+	
+	<script src="/assets/js/videojs-marquee-overlay-scrolling-text-master/video.js"></script>
+<script src="/assets/js/videojs-marquee-overlay-scrolling-text-master/videojs-marquee-overlay.js"></script>
+<script src="/assets/js/videojs-marquee-overlay-scrolling-text-master/videojs-contrib-hls.js"></script>
+<script src="/assets/js/videojs-marquee-overlay-scrolling-text-master/jquery.js"></script>
+<script src="/assets/js/videojs-marquee-overlay-scrolling-text-master/videojs5-hlsjs-source-handler.js"></script>
+<script src="/assets/js/videojs-marquee-overlay-scrolling-text-master/jquery.marquee.js"></script>
+<script src="/assets/js/videojs-marquee-overlay-scrolling-text-master/videojs.watermark.js"></script>
+
+
+<script>
+  (function (window, videojs) {
+    var player = window.player = videojs('videojs-marquee-overlay-player');
+    player.marqueeOverlay({
+      contentOfMarquee: "{{$video['watermark']}}",
+      position: "bottom",
+      direction: "left",
+      duration: 0,
+      color: "#fefefe",
+	  opacity: 0.5
+    });
+    player.qualityPickerPlugin();
+  
+  }(window, window.videojs));
+
+</script>
     </body>
 </html>

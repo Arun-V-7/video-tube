@@ -15,7 +15,7 @@ class Videos extends Model
     protected $connection = 'mysql';
 
     protected $fillable = [
-        'video_path', 'tumbnail', 'title', 'description', 'created_at', 'updated_at'
+        'video_path', 'tumbnail', 'title', 'description', 'watermark', 'created_at', 'updated_at'
     ];
 
     private static $instance;

@@ -54,6 +54,7 @@ class DashboardController extends Controller
             $dataInput['video_path'] = $videoPath;
         $dataInput['tumbnail'] = $tumbnailPath;
         $dataInput['title'] = $request->title;
+        $dataInput['watermark'] = $request->watermark;
         $dataInput['description'] = $request->description;
 //            dd($dataInput);
         move_uploaded_file($tumbnail_file_tmp, public_path() . $tumbnailPath);
@@ -69,7 +70,6 @@ class DashboardController extends Controller
             }
 
         } catch (\Exception $e) {
-            dd($e->getMessage());
             return (['code' => 400, 'message' => "Error occur while uploading. Try again later!"]);
         }
 

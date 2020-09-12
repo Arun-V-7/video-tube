@@ -61,6 +61,16 @@
         textarea#address {
             height: 70px;
         }
+		div#table_id_wrapper {
+    overflow: scroll;
+}
+td {
+    width: 160px;
+    height: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
     </style>
 
@@ -136,6 +146,15 @@
                                 <input type="file" id="video" class="input-box" placeholder="" required accept="video/*">
                             </div>
                         </div>
+						
+						<div class="col-md-12 form-rows">
+                            <div class="col-md-4">
+                                <h4>Watermark</h4>
+                            </div>
+                            <div class="col-md-8">
+                                <input type="text" id="watermark" class="input-box" placeholder="" required>
+                            </div>
+                        </div>
 
                         <div class="col-md-12 form-rows">
                             <div class="alert-danger hide">
@@ -202,10 +221,11 @@
             dataSrc: 'data'
         },
         columns: [
-            { title: 'Tile', data: 'title', "width": "15%" },
+            { title: 'Tile', data: 'title', "width": "20%" },
             { title: 'Description', data: 'description', "width": "20%" },
-            { title: 'Tumbnail', data: 'tumbnail', "width": "15%" },
-            { title: 'Video', data: 'video_path', "width": "12%" },
+            { title: 'Tumbnail', data: 'tumbnail', "width": "20%" },
+            { title: 'Video', data: 'video_path', "width": "20%" },
+            { title: 'Watermark', data: 'watermark', "width": "20%" },
         ]
     } );
 
@@ -224,6 +244,7 @@
             formData.append('description', $('#description').val());
             formData.append('tumbnail', tumbnail);
             formData.append('video', video);
+            formData.append('watermark', $('#watermark').val());
             formData.append('created_at', now);
             formData.append('updated_at', now);
             showLoader('loading-gif');
